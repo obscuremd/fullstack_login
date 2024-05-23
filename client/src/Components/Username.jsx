@@ -12,7 +12,7 @@ const Username = () => {
 
   const [active, setActive] = useRecoilState(ActiveState)
 
-  const [username, setUsername] = useState('')
+  const [name, setName] = useState('')
   const [password, setPassword] = useState('')
 
 
@@ -53,10 +53,10 @@ const Username = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault()
       try {
-        const req = await axios.get(`${URL}users/login`,{name:username, password:password})
+        const req = await axios.post(`http://localhost:8800/api/users/login`,{name:name, password:password})
         console.log(req);
       } catch (error) {
-        console.log(error);
+        console.log(JSON.stringify(error));
         toast.error('error')
       }
   }
@@ -80,7 +80,7 @@ const Username = () => {
             </div>
             
             <div className="textbox flex flex-col items-center gap-6">
-              <input onChange={(e)=>setUsername(e.target.value)}  type="text" placeholder="username" className={styles.textbox} />
+              <input onChange={(e)=>setName(e.target.value)}  type="text" placeholder="username" className={styles.textbox} />
               <input onChange={(e)=>setPassword(e.target.value)}  type="text" placeholder="password" className={styles.textbox} />
               <button onClick={handleSubmit} className={styles.btn}>Lets go</button>
             </div>
