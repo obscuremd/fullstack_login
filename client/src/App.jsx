@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 
 const App = () => {
 
-  const isLoggedIn = false
+  const isLoggedIn = window.localStorage.getItem('token')
 
   return (
     <BrowserRouter>

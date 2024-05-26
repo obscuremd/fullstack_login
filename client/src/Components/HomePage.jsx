@@ -14,12 +14,9 @@ const HomePage = () => {
 
   const [collection, setCollection]= useState(New_collections)
 
-  const handleSubmit=()=>{
-    const data ={image, name}
-    setCollection([...collection, data])
-
-    setImage('')
-    setName('')
+  const logout=()=>{
+    window.localStorage.removeItem('token')
+    window.location.reload()
   }
 
   const Button=({icon, name, index})=>(
@@ -53,6 +50,7 @@ const HomePage = () => {
         <Button icon={<ProfileCircle/>} name={'Profile'} index={2}/>
       </div>
 
+      <button onClick={logout} className="p-2 bg-slate-800 text-white">log-out</button>
       
     </div>
   )

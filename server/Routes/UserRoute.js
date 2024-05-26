@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({name:name})
         const token = jwt.sign({userId:user._id}, SECRET_KEY, {expiresIn:'1hr'})
     
-        res.status(200).json([token, user])
+        res.status(200).json(token)
     
         !user && res.status(404).send('user not found')
         

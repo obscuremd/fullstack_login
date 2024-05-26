@@ -16,50 +16,54 @@ const Username = () => {
   const [password, setPassword] = useState('')
 
 
-  // const handleSubmit=async(e)=>{
-  //   e.preventDefault()
-  //   const trimmedPassword = password.trim(); // Trim the input value
-  //   const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-  //   const trimmedUsername = username.trim(); // Trim the input value
-
-  //   if (trimmedUsername === '') {
-  //     toast.error('Invalid username');
-  //   }else if (trimmedPassword === '') {
-  //     toast.error('Invalid Password');
-  //   }else if(trimmedPassword.length < 4){
-  //     toast.error('password must be at least 4 characters')
-  //   } else if (!characters.test(trimmedPassword)){
-  //     toast.error('must include special characters')
-  //   }
-  //   else {
-  //     try {
-  //       const req = await axios.get('http://localhost:8800/api/users/login',{name:trimmedUsername, password:trimmedPassword})
-
-  //       if (req.status === 200){ 
-  //         toast.success('Go ahead');
-  //         console.log(req);
-  //         setTimeout(()=>{setActive(3)},2000)
-  //       }else{
-  //         toast.error('invalid login')
-  //       }
-        
-  //     } catch (error) {
-  //       console.log(error);
-  //       toast.error(error)
-  //     }
-      
-  //   }
-  // }
   const handleSubmit=async(e)=>{
     e.preventDefault()
+    const trimmedPassword = password.trim(); // Trim the input value
+    const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const trimmedUsername = name.trim(); // Trim the input value
+
+    if (trimmedUsername === '') {
+      toast.error('Invalid username');
+    }else if (trimmedPassword === '') {
+      toast.error('Invalid Password');
+    }else if(trimmedPassword.length < 4){
+      toast.error('password must be at least 4 characters')
+    } else if (!characters.test(trimmedPassword)){
+      toast.error('must include special characters')
+    }
+    else {
       try {
-        const req = await axios.post(`http://localhost:8800/api/users/login`,{name:name, password:password})
-        console.log(req);
+        const req = await axios.post('http://localhost:8800/api/users/login',{name:trimmedUsername, password:trimmedPassword})
+
+        if (req.status === 200){ 
+          toast.success('Go ahead');
+          console.log(req.data);
+
+          setTimeout(()=>{
+            window.localStorage.setItem('token', req.data)
+            window.location.reload();
+          },2000)
+        }else{
+          toast.error('invalid login')
+        }
+        
       } catch (error) {
-        console.log(JSON.stringify(error));
-        toast.error('error')
+        console.log(error);
+        toast.error(error)
       }
+      
+    }
   }
+  // const handleSubmit=async(e)=>{
+  //   e.preventDefault()
+  //     try {
+  //       const req = await axios.post(`${URL}users/login`,{name:name, password:password})
+  //       console.log(req);
+  //     } catch (error) {
+  //       console.log(JSON.stringify(error));
+  //       toast.error('error')
+  //     }
+  // }
 
   return (
     <div className="container mx-auto">
