@@ -12,3 +12,135 @@ body{
     background: #dcdce6;
     background-image: url('./assets/Background.png');
 }
+
+#root
+{
+    --cir: #DCDCDC;
+}
+
+.card{
+    position: relative;
+    width: 320px;
+    height: 430px;
+    background: var(--cir);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.box{
+    position: relative;
+    width: 110%;
+    height: 200px;
+    background: #f00;
+    border-radius: 15px;
+}
+.box:nth-child(1)::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent  ;
+    top: 90px;
+    left: -1px;
+    z-index: 10;
+    border-bottom-left-radius:20px ;
+                /* / vertical offset {i.e left and right */
+    box-shadow: -6px 6px var(--cir);
+                    /* \ horizontal offset {i.e up and down} */
+}
+.box:nth-child(1)::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    bottom: 0px;
+    left: 98px;
+    z-index: 10;
+    border-bottom-left-radius:20px ;
+                /* / vertical offset {i.e left and right */
+    box-shadow: -6px 6px var(--cir);
+                    /* \ horizontal offset {i.e up and down} */
+}
+
+.box:nth-child(2){
+    background-color: #f4f4f4;
+    height: 220px;
+    width: 100%;
+}
+
+.box:nth-child(2)::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    top: 0px;
+    left: 96px;
+    z-index: 10;
+    border-top-left-radius:20px ;
+                /* / vertical offset {i.e left and right */
+    box-shadow: -6px -3px var(--cir);
+                    /* \ horizontal offset {i.e up and down} */
+}
+
+.box:nth-child(2)::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    bottom: 123px;
+    left: 0px;
+    z-index: 10;
+    border-top-left-radius:20px ;
+                /* / vertical offset {i.e left and right */
+    box-shadow: -6px -3px var(--cir);
+                    /* \ horizontal offset {i.e up and down} */
+}
+
+.circle{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    top: 25%;
+    left:-25%;
+    background: #0f0;
+    border: 10px solid var(--cir) ;
+}
+
+.active{
+    position: absolute;
+    bottom: 100%;
+    background: #0f0;
+    padding: 10px;
+    border-radius: 100%;
+    border: 10px solid #E8E8E8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    position: absolute;
+    left:116%;
+    bottom: 18%;
+    border-radius: 50px 0 0 0;
+    box-shadow: 0px -5px #E8E8E8;
+}
+.active::after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    position: absolute;
+    right:116%;
+    bottom: 18%;
+    border-radius: 0 50px 0 0;
+    box-shadow: 0px -5px #E8E8E8;
+}

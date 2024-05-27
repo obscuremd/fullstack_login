@@ -33,7 +33,7 @@ const Username = () => {
     }
     else {
       try {
-        const req = await axios.post('http://localhost:8800/api/users/login',{name:trimmedUsername, password:trimmedPassword})
+        const req = await axios.post(`${URL}users/login`,{name:trimmedUsername, password:trimmedPassword})
 
         if (req.status === 200){ 
           toast.success('Go ahead');
@@ -54,17 +54,8 @@ const Username = () => {
       
     }
   }
-  // const handleSubmit=async(e)=>{
-  //   e.preventDefault()
-  //     try {
-  //       const req = await axios.post(`${URL}users/login`,{name:name, password:password})
-  //       console.log(req);
-  //     } catch (error) {
-  //       console.log(JSON.stringify(error));
-  //       toast.error('error')
-  //     }
-  // }
 
+  
   return (
     <div className="container mx-auto">
 

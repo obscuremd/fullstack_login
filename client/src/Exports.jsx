@@ -8,7 +8,11 @@ const Recovery = lazy(()=>import('./Components/Recovery'))
 const Register = lazy(()=>import('./Components/Register'))
 const Reset = lazy(()=>import('./Components/Reset'))
 const Username = lazy(()=>import('./Components/Username'))
-const HomePage = lazy(()=>import('./Components/HomePage'))
+
+const HomePage = lazy(()=>import('./Components/Navigation/HomePage'))
+const ImageCutout = lazy(()=>import('./Components/Navigation/ImageCutout'))
+const ImageUpload = lazy(()=>import('./Components/Navigation/ImageUpload'))
+const InvertedBorderNav = lazy(()=>import('./Components/Navigation/InvertedBorderNav'))
 
 const Navigation = lazy(()=>import('./Navigation'))
 const Auth = lazy(()=>import('./Auth'))
@@ -23,6 +27,9 @@ const Exports ={
     Username,
 
     HomePage,
+    ImageCutout,
+    ImageUpload,
+    InvertedBorderNav,
 
     Auth,
     Navigation
